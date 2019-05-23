@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControladorDeClientes",urlPatterns = {"/clientes"})
 public class ControladorDeClientes extends HttpServlet {
 
-//    private Clientes service = new ClientesEmMemoria();
-    private Clientes service = new ClientesEmJDBC();
+    private Clientes service = new ClientesEmMemoria();
+//    private Clientes service = new ClientesEmJDBC();
 
     // Listar todos os clientes
     @Override

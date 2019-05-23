@@ -12,27 +12,31 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 
 /**
  * @author Ricardo Job
  * @mail ricardo.job@ifpb.edu.br
  * @since 08/05/2019, 10:33:23
  */
+@Stateless
 public class ClientesEmJDBC implements Clientes {
 
     private Connection connection;
 
-    public ClientesEmJDBC() {
+
+    @PostConstruct
+    public void init() {
         try {
             Class.forName("org.postgresql.Driver");
             this.connection = DriverManager.getConnection(
-                "jdbc:postgresql://host-banco:5432/clientes",
+                "jdbc:postgresql://localhost:5432/clientes",
                 "job","123"
             );
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
-
     }
 
     @Override
