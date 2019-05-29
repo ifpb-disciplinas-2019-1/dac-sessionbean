@@ -2,10 +2,9 @@ package br.edu.ifpb.web;
 
 import br.edu.ifpb.domain.Cliente;
 import br.edu.ifpb.domain.Clientes;
-import br.edu.ifpb.infra.ClientesEmJDBC;
-import br.edu.ifpb.infra.ClientesEmMemoria;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControladorDeClientes",urlPatterns = {"/clientes"})
 public class ControladorDeClientes extends HttpServlet {
 
-    private Clientes service = new ClientesEmMemoria();
+//    private Clientes service = new ClientesEmMemoria();
 //    private Clientes service = new ClientesEmJDBC();
+    @EJB
+//    @Inject
+    private Clientes service;
 
+//    Informações:   Portable JNDI names for EJB ClientesEmJDBC:
+//    [java:global/sessionbeans/ClientesEmJDBC!br.edu.ifpb.domain.Clientes, 
+//    java:global/sessionbeans/ClientesEmJDBC]
+    
     // Listar todos os clientes
     @Override
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
