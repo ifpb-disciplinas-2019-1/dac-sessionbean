@@ -1,6 +1,5 @@
 package br.edu.ifpb.api;
 
-import java.util.Set;
 import javax.ws.rs.core.Application;
 
 /**
